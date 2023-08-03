@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+.auth-wrapper {
+    min-height: 100vh;
+    position: relative;
+}
+
+.auth-wrapper .auth-box {
+    background: #fff;
+    padding: 20px;
+    box-shadow: 1px 0 20px #00000014;
+    max-width: 400px;
+    min-width: 300px;
+}
+
+.alert-primary {
+    --bs-alert-color: #fefdff;
+    --bs-alert-bg: #7460ee;
+    --bs-alert-border-color: #7460ee;
+}
+
+.form-check {
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 1.875em;
+    margin-bottom: 0.125rem;
+}
+
+.fv-plugins-message-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.fv-plugins-message-container .error {
+    font-size: 12px;
+    margin-top: 5px;
+    color: red;
+}
+
+.auth-box .form-control {
+    position: relative;
+}
+
+.auth-box .fv-plugins-message-container {
+    position: absolute;
+    bottom: -20px;
+}
+
+.modal-blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+    backdrop-filter: blur(8px);
+}

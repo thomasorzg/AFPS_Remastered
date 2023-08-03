@@ -1,0 +1,146 @@
+<div class="row">
+    <div class="col-12">
+        <div class="page-breadcrumb">
+            <div class="d-md-flex align-items-center">
+                <h3 class="page-title">Operadores</h3>
+                <div class="ms-auto">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item" tabindex="0"><a href="javascript:void(0)">Componente</a></li>
+
+                            <li class="breadcrumb-item active">Operadores</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Lista de operadores</h4>
+
+                <hr>
+        
+                <div class="d-flex mb-3 mt-3">
+                    <input type="text" placeholder="Buscar..." class="form-control w-25 ng-untouched ng-pristine ng-valid">
+                    <button class="btn btn-info ms-auto" (click)="showDialog()">
+                        Nuevo operador
+                    </button>
+                </div>
+        
+
+                
+                <div class="table-responsive">
+                    <table class="table align-middle text-nowrap">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center"> # </th>
+                                <th scope="col"> Nombre </th>
+                                <th scope="col"> Estado </th>
+                                <th scope="col"> Creado en </th>
+                                <th scope="col"> Actualizado en </th>
+                                <th scope="col"> Acciones </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let result of results; let i = index">
+                                <td class="text-center"> {{ i + 1 }} </td>
+                                <td> {{ result.name }} </td>
+                                <td> <span class="badge" [ngClass]="{'bg-success': result.status === 'ACTIVE', 'bg-danger': result.status === 'INACTIVE', 'bg-warning': result.status === 'SUSPENDED'}"> {{ result.status }} </span> </td>
+                                <td> {{ result.createdAt }} </td>
+                                <td> {{ result.updatedAt }} </td>
+                                <td>
+                                    <button class="btn btn-dark btn-sm" (click)="showDetailDialog(result)">Ver más</button>
+                                    &nbsp;
+                                    <button class="btn btn-primary btn-sm" (click)="editOperator(result)">Editar</button>
+                                    &nbsp;
+                                    <button class="btn btn-danger btn-sm" (click)="confirmDelete(result)">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Form -->
+<div [ngClass]="{'modal-blur': isModalOpen}">
+    <p-toast></p-toast>
+    <p-dialog [header]="isEditMode ? 'Editar operador' : 'Nuevo operador'" [(visible)]="visible" [breakpoints]="{ '960px': '75vw' }" [style]="{ width: '25vw' }" [draggable]="false" [resizable]="false" (onHide)="hideDialog()">
+        <form [formGroup]="form" (submit)="submit()">
+            <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" class="form-control" formControlName="name" id="name" name="name">
+            </div>
+            
+            <div class="form-group">
+                <label for="address">Dirección</label>
+                <input type="text" class="form-control" formControlName="address" id="address" name="address">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Teléfono</label>
+                <input type="text" class="form-control" formControlName="phone" id="phone" name="phone">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" class="form-control" formControlName="email" id="email" name="email">
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Género</label>
+                <select class="form-control" formControlName="gender" id="gender" name="gender">
+                    <option value="" disabled selected>Seleccione un género</option>
+                    <option value="MALE">MASCULINO</option>
+                    <option value="FEMALE">FEMENINO</option>
+                    <option value="OTHER">OTRO</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="status">Estado</label>
+                <select class="form-control" formControlName="status" id="status" name="status">
+                    <option value="" disabled selected>Seleccione un estado</option>
+                    <option value="ACTIVE">ACTIVO</option>
+                    <option value="INACTIVE">INACTIVO</option>
+                    <option value="SUSPENDED">SUSPENDIDO</option>
+                </select>
+            </div>
+
+            <hr>
+
+            <button type="submit" class="btn btn-success" [disabled]="loading">
+                <span *ngIf="!loading">{{ isEditMode ? 'Actualizar' : 'Enviar' }}</span>
+                <span *ngIf="loading">Por favor, espere...</span>
+            </button>
+        </form>
+    </p-dialog>
+</div>
+
+<!-- Modal Operador Detallado -->
+<div>
+    <p-toast></p-toast>
+    <p-dialog header="Acerca del operador" [(visible)]="detailVisible" [breakpoints]="{ '960px': '75vw' }" [style]="{ width: '25vw' }" [draggable]="false" [resizable]="false" (onHide)="hideDetailDialog()">
+        <div *ngIf="selectedOperator">
+            <div class="d-flex justify-content-center">
+                <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" style="width:100px">
+            </div>
+
+            <h3 class="fw-bold text-center">{{ selectedOperator.name }}</h3>
+
+            <hr>
+
+            <b>Dirección:</b> <p>{{ selectedOperator.address }}</p>
+            <b>Teléfono:</b> <p>{{ selectedOperator.phone }}</p>
+            <b>Correo electrónico:</b> <p>{{ selectedOperator.email }}</p>
+            <b>Género:</b> <p>{{ selectedOperator.gender }}</p>
+            <b>Estado:</b> <p>{{ selectedOperator.status }}</p>
+        </div>
+    </p-dialog>
+</div>
+

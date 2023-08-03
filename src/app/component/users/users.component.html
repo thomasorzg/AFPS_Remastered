@@ -1,0 +1,107 @@
+<div class="row">
+    <div class="col-12">
+        <div class="page-breadcrumb">
+            <div class="d-md-flex align-items-center">
+                <h3 class="page-title">Usuarios</h3>
+                <div class="ms-auto">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item" tabindex="0"><a href="javascript:void(0)">Componente</a></li>
+
+                            <li class="breadcrumb-item active">Usuarios</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Lista de usuarios</h4>
+
+                <hr>
+        
+                <div class="d-flex mb-3 mt-3">
+                    <input type="text" placeholder="Buscar..." class="form-control w-25 ng-untouched ng-pristine ng-valid">
+                    <button class="btn btn-info ms-auto" (click)="showDialog()">
+                        Nuevo usuario
+                    </button>
+                </div>
+        
+                <div class="table-responsive">
+                    <table class="table align-middle text-nowrap">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center"> # </th>
+                                <th scope="col"> Nombre </th>
+                                <th scope="col"> Correo electrónico </th>
+                                <th scope="col"> Rol </th>
+                                <th scope="col"> Estado </th>
+                                <th scope="col"> Creado en </th>
+                                <th scope="col"> Actualizado en </th>
+                                <th scope="col"> Acciones </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let result of results; let i = index">
+                                <td class="text-center"> {{ i + 1 }} </td>
+                                <td> {{ result.name }} </td>
+                                <td> {{ result.email }}  </td>
+                                <td> {{ result.role }}  </td>
+                                <td> <span class="text-uppercase" [ngClass]="{'badge bg-success': result.isActive === 'Active', 'badge bg-danger': result.isActive === 'Not Active'}"> {{ result.isActive }} </span></td>
+                                <td> {{ result.createdAt }} </td>
+                                <td> {{ result.updatedAt }} </td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm" (click)="editUser(result)">Editar</button>
+                                    &nbsp;
+                                    <button class="btn btn-danger btn-sm" (click)="confirmDelete(result)">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div [ngClass]="{'modal-blur': isModalOpen}">
+    <p-toast></p-toast>
+    <p-dialog [header]="isEditMode ? 'Editar usuario' : 'Nuevo usuario'" [(visible)]="visible" [breakpoints]="{ '960px': '75vw' }" [style]="{ width: '25vw' }" [draggable]="false" [resizable]="false" (onHide)="hideDialog()">
+        <form [formGroup]="form" (submit)="submit()">
+            <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" class="form-control" formControlName="name" id="name" name="name">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" class="form-control" formControlName="email" id="email" name="email">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" class="form-control" formControlName="password" id="password" name="password">
+            </div>
+
+            <div class="form-group">
+                <label for="role">Rol</label>
+                <select class="form-control" formControlName="role" id="role" name="role">
+                    <option value="" disabled selected>Seleccione un rol</option>
+                    <option value="ADMIN">Admin</option>
+                    <option value="LENDER">Lender</option>
+                </select>
+            </div>
+
+            <hr>
+
+            <button type="submit" class="btn btn-success" [disabled]="loading">
+                <span *ngIf="!loading">{{ isEditMode ? 'Actualizar' : 'Enviar' }}</span>
+                <span *ngIf="loading">Por favor, espere...</span>
+            </button>
+        </form>
+    </p-dialog>
+</div>

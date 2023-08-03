@@ -1,0 +1,138 @@
+<div class="row">
+    <div class="col-12">
+        <div class="page-breadcrumb">
+            <div class="d-md-flex align-items-center">
+                <h3 class="page-title">Incubadoras</h3>
+                <div class="ms-auto">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item" tabindex="0"><a href="javascript:void(0)">Componente</a></li>
+
+                            <li class="breadcrumb-item active">Incubadoras</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Lista de incubadoras</h4>
+
+                <hr>
+        
+                <div class="d-flex mb-3 mt-3">
+                    <input type="text" placeholder="Buscar..." class="form-control w-25 ng-untouched ng-pristine ng-valid">
+                    <button class="btn btn-info ms-auto" (click)="showDialog()">
+                        Nueva incubadora
+                    </button>
+                </div>
+        
+
+                
+                <div class="table-responsive">
+                    <table class="table align-middle text-nowrap">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center"> # </th>
+                                <th scope="col"> Nombre </th>
+                                <th scope="col"> Serie </th>
+                                <th scope="col"> Módelo </th>
+                                <th scope="col"> Operador </th>
+                                <th scope="col"> Estado </th>
+                                <th scope="col"> Creado en </th>
+                                <th scope="col"> Actualizado en </th>
+                                <th scope="col"> Acciones </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let result of results; let i = index">
+                                <td class="text-center"> {{ i + 1 }} </td>
+                                <td> {{ result.name }} </td>
+                                <td> {{ result.serie | truncate }} </td>
+                                <td> {{ result.model | truncate }} </td>
+                                <td> {{ result.operator | truncate }} </td>
+                                <td> <span class="badge" [ngClass]="{'bg-success': result.status === 'ACTIVE', 'bg-danger': result.status === 'INACTIVE', 'bg-warning': result.status === 'SUSPENDED'}"> {{ result.status }} </span> </td>
+                                <td> {{ result.createdAt }} </td>
+                                <td> {{ result.updatedAt }} </td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm" (click)="editIncubator(result)">Editar</button>
+                                    &nbsp;
+                                    <button class="btn btn-danger btn-sm" (click)="confirmDelete(result)">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Form -->
+<div [ngClass]="{'modal-blur': isModalOpen}">
+    <p-toast></p-toast>
+    <p-dialog [header]="isEditMode ? 'Editar incubadora' : 'Nueva incubadora'" [(visible)]="visible" [breakpoints]="{ '960px': '75vw' }" [style]="{ width: '25vw' }" [draggable]="false" [resizable]="false" (onHide)="hideDialog()">
+        <form [formGroup]="form" (submit)="submit()">
+            <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" class="form-control" formControlName="name" id="name" name="name">
+            </div>
+            
+            <div class="form-group">
+                <label for="serie">Serie</label>
+                <input type="text" class="form-control" formControlName="serie" id="serie" name="serie">
+            </div>
+
+            <div class="form-group">
+                <label for="model">Módelo</label>
+                <input type="text" class="form-control" formControlName="model" id="model" name="model">
+            </div>
+
+            <div class="form-group">
+                <label for="operator">Operador</label>
+                <select class="form-control" formControlName="operatorId" id="operatorId" name="operatorId">
+                    <option value="" disabled selected>Seleccione un operador</option>
+                    <option *ngFor="let operator of operators" [value]="operator.id">{{ operator.name }}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="status">Estado</label>
+                <select class="form-control" formControlName="status" id="status" name="status">
+                    <option value="" disabled selected>Seleccione un estado</option>
+                    <option value="ACTIVE">ACTIVO</option>
+                    <option value="INACTIVE">INACTIVO</option>
+                    <option value="SUSPENDED">SUSPENDIDO</option>
+                </select>
+            </div>
+
+            <hr>
+
+            <button type="submit" class="btn btn-success" [disabled]="loading">
+                <span *ngIf="!loading">{{ isEditMode ? 'Actualizar' : 'Enviar' }}</span>
+                <span *ngIf="loading">Por favor, espere...</span>
+            </button>
+        </form>
+    </p-dialog>
+</div>
+
+<!-- Modal Incubadora Detallado -->
+<!-- <div>
+    <p-toast></p-toast>
+    <p-dialog header="Incubator Details" [(visible)]="detailVisible" [breakpoints]="{ '960px': '75vw' }" [style]="{ width: '25vw' }" [draggable]="false" [resizable]="false" (onHide)="hideDetailDialog()">
+        <div *ngIf="selectedIncubator">
+            <h5>{{ selectedIncubator.name }}</h5>
+            <hr>
+            <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" style="width:100px">
+            <hr>
+            <p>Address: {{ selectedIncubator.address }}</p>
+            <p>Phone: {{ selectedIncubator.phone }}</p>
+            <p>Email: {{ selectedIncubator.email }}</p>
+            <p>Gender: {{ selectedIncubator.gender }}</p>
+            <p>Status: {{ selectedIncubator.status }}</p>
+        </div>
+    </p-dialog>
+</div> -->

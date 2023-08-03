@@ -1,0 +1,68 @@
+<div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background: url(../../../../assets/images/bg/auth-bg.jpg) no-repeat center center;">
+    <div>
+        <div class="auth-box">
+            <div id="loginform">
+                <div class="text-center">
+                    <span class="db"><img src="../../../../assets/images/logos/logo-text.png" alt="logo"></span>
+                    <hr>
+                    <h3 class="font-medium mb-4"> Iniciar sesión </h3>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <form [formGroup]="form" (submit)="submit()" id="loginform" class="form-horizontal mt-3 fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
+                            <div class="input-group mb-3">
+                                <span id="basic-addon1" class="input-group-text">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                
+                                <input class="form-control form-control-lg form-control-solid" type="text" formControlName="email" name="email">
+                                
+                                <!-- <div class="fv-plugins-message-container">
+                                    <div class="error">
+                                        <div *ngIf="form.controls.email.touched && form.controls.email.hasError('required')">
+                                            Email is required
+                                        </div>
+        
+                                        <div *ngIf="form.controls.email.dirty && form.controls.email.errors">
+                                            Invalid email
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <span id="basic-addon2" class="input-group-text">
+                                    <i class="fa fa-pencil"></i>
+                                </span>
+                                
+                                <input class="form-control form-control-lg form-control-solid" type="password" formControlName="password" name="password">
+
+                                <!-- <div class="fv-plugins-message-container">
+                                    <div class="error">
+                                        <div *ngIf="form.controls.password.touched && form.controls.password.hasError('required')">
+                                            Password is required
+                                        </div>
+        
+                                        <div *ngIf="form.controls.password.dirty && form.controls.password.errors">
+                                            Password atleast 6 words
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+
+                            <div class="form-group text-center mt-3">
+                                <div class="col-xs-12 pb-4">
+                                    <button [disabled]="loading" type="submit" class="btn d-block w-100 btn-lg btn-info">
+                                        <span *ngIf="!loading">Continuar</span>
+                                        <span *ngIf="loading">Por favor, espere...</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
