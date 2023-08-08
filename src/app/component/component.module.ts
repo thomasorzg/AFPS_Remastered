@@ -13,6 +13,7 @@ import { OperatorsComponent } from './operators/operators.component';
 import { IncubatorsComponent } from './incubators/incubators.component';
 import { ReportsComponent } from './reports/reports.component';
 import { TruncatePipe } from '../pipes/truncate.pipe';
+import { MonitoringComponent } from './monitoring/monitoring.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { TruncatePipe } from '../pipes/truncate.pipe';
     OperatorsComponent,
     IncubatorsComponent,
     ReportsComponent,
-    TruncatePipe
+    TruncatePipe,
+    MonitoringComponent
   ],
 })
 export class ComponentsModule { }

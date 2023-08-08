@@ -16,5 +16,5 @@ export class TopCardsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
 }

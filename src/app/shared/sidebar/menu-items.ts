@@ -33,6 +33,14 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: []
   },
+  {
+    path: '/component/monitoring',
+    title: 'Monitoreo',
+    icon: 'bi bi-bar-chart-line',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
   /* {
     path: '/component/cycles',
     title: 'Ciclos',
