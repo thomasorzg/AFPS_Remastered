@@ -1,19 +1,21 @@
 <div class="card">
     <div class="card-body">
         <!-- title -->
-                <h4 class="card-title">Top Selling</h4>
-                <h5 class="card-subtitle">Overview of the projects</h5>
-            
+        <h4 class="card-title">Más Vendidos</h4>
+        <h5 class="card-subtitle">Resumen de los proyectos</h5>
+
+
         <!-- title -->
         <div class="table-responsive">
             <table class="table align-middle">
                 <thead>
                     <tr>
-                        <th class="text-dark font-medium fs-4">Team Lead</th>
-                        <th class="text-dark font-medium fs-4">Project</th>
-                        <th class="text-dark font-medium fs-4">Status</th>
-                        <th class="text-dark font-medium fs-4">Weeks</th>
-                        <th class="text-dark font-medium fs-4">Budget</th>
+                        <th class="text-dark font-medium fs-4">Líder de Equipo</th>
+                        <th class="text-dark font-medium fs-4">Proyecto</th>
+                        <th class="text-dark font-medium fs-4">Estado</th>
+                        <th class="text-dark font-medium fs-4">Semanas</th>
+                        <th class="text-dark font-medium fs-4">Presupuesto</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -31,17 +33,17 @@
                         <td>
                             <span class="p-2 bg-{{ts.status}} rounded-circle d-inline-block ms-3"></span>
                         </td>
-                        
+
                         <td>
                             <h5 class="mb-0 fw-normal">{{ts.weeks}}</h5>
                         </td>
                         <td>
                             <h5 class="mb-0 fw-normal">{{ts.budget}}</h5>
                         </td>
-                    </tr>              
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    
+
 </div>
