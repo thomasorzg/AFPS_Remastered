@@ -11,7 +11,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.0.1",
-    "@angular/cdk": "^16.0.1",
+    "@angular/cdk": "^16.2.0",
     "@angular/common": "^16.0.1",
     "@angular/compiler": "^16.0.1",
     "@angular/core": "^16.0.1",
@@ -24,7 +24,7 @@
     "@ng-bootstrap/ng-bootstrap": "14.1.1",
     "@popperjs/core": "^2.11.7",
     "apexcharts": "^3.40.0",
-    "bootstrap": "^5.2.3",
+    "bootstrap": "^5.3.1",
     "bootstrap-icons": "^1.10.5",
     "i": "^0.3.7",
     "jwt-decode": "^3.1.2",

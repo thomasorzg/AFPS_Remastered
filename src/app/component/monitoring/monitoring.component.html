@@ -17,13 +17,69 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-4" *ngFor="let incubator of incubators">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">{{ incubator.name }}</h5>
-                <p class="card-text">Status: {{ incubator.status }}</p>
+<div class="input-wrapper p-2">
+    <input type="search" class="input" placeholder="Buscador">
+
+    <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd"
+            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+            clip-rule="evenodd" />
+    </svg>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-6" *ngFor="let incubator of incubators">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <div class=" d-flex justify-content-between ">
+                        <div class="d-flex align-items-center">
+
+                            <h5 class="card-title">{{ incubator.name }}</h5>
+                        </div>
+                        <nav class="navbar navbar-expand-lg navbar-dark">
+                            <div class="container-fluid">
+
+                                <div class="navbar-collapse" id="main_nav">
+                                    <ul class="DropdownStyle">
+                                        <li class="nav-item dropdown mx-5">
+                                            <a class="nav-link dropdown-toggle " data-bs-toggle="dropdown"></a>
+                                            <ul class="dropdown-menu fade-up">
+                                                <li><a class="dropdown-item drp" (click)="showDialog()"> Vehincular</a>
+                                                </li>
+                                                <li><a class="dropdown-item drp" href="#"> Desvehincular </a></li>
+                                                <li><a class="dropdown-item drp" href="#"> Editar </a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+
+                    <p class="card-text">Status: {{ incubator.status }}</p>
+                    <div class="row encub">
+                        <hr>
+                        <div class="col-6  text-center">
+                            <h2>Temperatura</h2>
+                            <h5>89</h5>
+                        </div>
+                        <div class="col-6 text-center">
+                            <h2>Humedad</h2>
+                            <h5>39</h5>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<p-dialog header="Vehincular Incubadora " [(visible)]="visible" [breakpoints]="{ '960px': '75vw' }" [style]="{ width: '25vw' }" [draggable]="false" [resizable]="false">
+    <div class=" justify-content-center ">
+
+        <input class="inputencu align-items-center text-center" type="text"
+            placeholder="INTRDUZCA UID DE LA INCUBADORA">
+    </div>
+
+</p-dialog>

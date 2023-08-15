@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./reports.component.scss']
 })
 export class ReportsComponent {
+  showreport : boolean = false;
+
+  showrep () {
+    this.showreport = !this.showreport;
+    console.log(this.showreport);
+  }
 
 }

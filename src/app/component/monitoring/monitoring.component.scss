@@ -1,0 +1,75 @@
+.encub {
+    display: flex;
+}
+
+.drp:hover {
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+}
+
+.inputencu {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    height: 100%;
+    color: green;
+    font-size: 130%;
+
+}
+
+.DropdownStyle {
+    list-style: none;
+}
+
+.input-wrapper {
+    position: relative;
+    width: 271px;
+}
+
+.input {
+    box-sizing: border-box;
+    color: #636262;
+    padding: 15px 15px 15px 35px;
+    width: 100%;
+
+}
+
+.input-icon {
+    color: #191919;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.navbar .nav-item .dropdown-menu {
+    display: table;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+    margin-top: 0;
+    right: -100px;
+}
+
+.navbar .nav-item:hover .nav-link {
+    color: #0051ff;
+}
+
+.navbar .nav-item .nav-link {
+    color: #000000;
+}
+
+.navbar .dropdown-menu.fade-up {
+    top: 180%;
+}
+
+.navbar .nav-item:hover .dropdown-menu {
+    transition: .3s;
+    opacity: 1;
+    visibility: visible;
+    top: 100%;
+    transform: rotateX(0deg);
+}

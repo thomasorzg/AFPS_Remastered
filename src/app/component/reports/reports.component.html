@@ -1,1 +1,51 @@
-<p>reports works!</p>
+ <div id="kt_reports" class="collapse show" >
+        <form id="kt_account_profile_details_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate"> 
+            <div class="card-body border-top p-9" *ngIf="!showreport">
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label required fw-bold fs-6">Start Date</label>
+
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-lg-12 fv-row fv-plugins-icon-container">
+                                <input type="date" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" formControlName="startDate" name="startDate" />
+                                
+                                <div class="fv-plugins-message-container invalid-feedback">
+                                    <div >
+                                        Start Date is required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label required fw-bold fs-6">End Date</label>
+
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-lg-12 fv-row fv-plugins-icon-container">
+                                <input type="date" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" formControlName="endDate" name="endDate" />
+                                
+                                <div class="fv-plugins-message-container invalid-feedback">
+                                    <div >
+                                        End Date is required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+
+            <div class="card-footer d-flex justify-content-end py-6 px-9">
+                <button type="submit" class="btn btn-primary">
+                    <span *ngIf="!showreport" (click)="showrep()">Generar</span>
+                    <span *ngIf="showreport" (click)="showrep()">Descargar</span>
+                </button>
+            </div>
+        </form>
+    </div>

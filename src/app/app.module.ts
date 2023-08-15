@@ -19,6 +19,10 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { LogoutComponent } from './pages/auth/logout/logout.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { MessageService } from 'primeng/api';
+import { DropdownModule } from 'primeng/dropdown';
+import { DialogModule } from 'primeng/dialog';
+
+
 
 @NgModule({
   declarations: [
@@ -40,6 +44,8 @@ import { MessageService } from 'primeng/api';
     FullComponent,
     NavigationComponent,
     SidebarComponent,
+    DropdownModule,
+    DialogModule
   ],
   providers: [
     {
