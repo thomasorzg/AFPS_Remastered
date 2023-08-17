@@ -69,7 +69,7 @@ export class SalesRatioComponent implements OnInit {
       dataLabels: {
         enabled: false
       },
-      colors: ["#0d6efd", "#009efb", "#6771dc"],
+      colors: ["#FF7000", "#04FF00", "#FF7000"],
       stroke: {
         show: true,
         width: 4,

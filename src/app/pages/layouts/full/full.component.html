@@ -1,12 +1,16 @@
-<div id="main-wrapper" [ngClass]="{ 'show-sidebar': showMobileMenu }" dir="ltr" data-theme="light" data-layout="vertical" [attr.data-sidebartype]="sidebartype" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+<div id="main-wrapper" [ngClass]="{ 'show-sidebar': showMobileMenu }" dir="ltr" data-theme="light"
+  data-layout="vertical" [attr.data-sidebartype]="sidebartype" data-sidebar-position="absolute"
+  data-header-position="absolute" data-boxed-layout="full">
   <!-- ============================================================== -->
   <!-- Topbar header - style you can find in topbar.scss -->
   <!-- ============================================================== -->
   <header class="topbar" data-navbarbg="skin1">
     <nav class="d-flex top-navbar navbar-expand-lg navbar-dark">
-      <div class="navbar-header" [ngClass]="expandLogo ? 'expand-logo' : ''" data-logobg="skin6">
+      <div class="navbar-header" [ngClass]="expandLogo ? 'expand-logo' : ''" data-logobg="skin6"
+        style="background-color: #F18222;">
         <!-- This is for the sidebar toggle which is visible on mobile only -->
-        <a (click)="showMobileMenu = !showMobileMenu" class="nav-toggler waves-effect waves-light d-block d-lg-none" href="javascript:void(0)">
+        <a (click)="showMobileMenu = !showMobileMenu" class="nav-toggler waves-effect waves-light d-block d-lg-none"
+          href="javascript:void(0)">
           <i [ngClass]="showMobileMenu ? 'bi bi-text-left fs-6' : 'bi bi-text-left fs-6'"></i>
         </a>
 
@@ -14,14 +18,9 @@
         <!-- Logo -->
         <!-- ============================================================== -->
         <a class="navbar-brand" href="/">
-          <b class="logo-icon">
-            <img src="assets/images/logos/logo-icon.png" alt="homepage" class="dark-logo" />
-          </b>
-
-          <span class="logo-text">
-            <img src="assets/images/logos/logo-text.png" class="dark-logo" alt="homepage" />
-          </span>
+          <img class="logo-image" src="assets/images/logos/bachoco-logo.svg" alt="homepage" />
         </a>
+
         <!-- ============================================================== -->
         <!-- End Logo -->
         <!-- ============================================================== -->
@@ -36,7 +35,7 @@
           <i class="bi bi-text-right fs-6"></i>
         </a>
       </div>
-      
+
       <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin1"
         [ngbCollapse]="!isCollapsed">
         <app-navigation (toggleSidebar)="toggleSidebarType()" class="w-100"></app-navigation>
@@ -46,7 +45,8 @@
   <!-- ============================================================== -->
   <!-- Left Sidebar - style you can find in sidebar.scss  -->
   <!-- ============================================================== -->
-  <aside class="left-sidebar" data-sidebarbg="skin6" (mouseover)="Logo()" (mouseout)="Logo()">
+  <aside class="left-sidebar" data-sidebarbg="skin6" (mouseover)="Logo()" (mouseout)="Logo()"
+    style="background-color: #F18222;">
     <app-sidebar></app-sidebar>
   </aside>
   <!-- ============================================================== -->
